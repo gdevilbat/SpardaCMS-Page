@@ -44,7 +44,7 @@
                                 <div class="m-portlet__head-caption">
                                     <div class="m-portlet__head-title">
                                         <h3 class="m-portlet__head-text">
-                                            Post Form
+                                            Page Form
                                         </h3>
                                     </div>
                                 </div>
