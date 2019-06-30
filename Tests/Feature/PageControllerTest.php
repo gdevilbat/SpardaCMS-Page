@@ -50,17 +50,19 @@ class PageControllerTest extends TestCase
         $name = $faker->word;
         $slug = $faker->word;
 
+        $page = \Gdevilbat\SpardaCMS\Modules\Post\Entities\Post::where('post_type', 'page')->first();
+
         $response = $this->actingAs($user)
                          ->from(action('\Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers\PageController@create'))
                          ->post(action('\Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers\PageController@store'), [
-                                'post' => ['post_title' => $name, 'post_slug' => $slug, 'post_content' => $faker->text],
+                                'post' => ['post_title' => $name, 'post_slug' => $slug, 'post_content' => $faker->text, 'post_parent' => $page->getKey()],
                             ])
                          ->assertStatus(302)
                          ->assertRedirect(action('\Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers\PageController@index'))
                          ->assertSessionHas('global_message.status', 200)
                          ->assertSessionHasNoErrors(); //Return Valid, Data Complete
 
-        $this->assertDatabaseHas(\Gdevilbat\SpardaCMS\Modules\Post\Entities\Post::getTableName(), ['post_slug' => $slug]);
+        $this->assertDatabaseHas(\Gdevilbat\SpardaCMS\Modules\Post\Entities\Post::getTableName(), ['post_slug' => $slug, 'post_parent' => $page->getKey()]);
     }
 
     public function testUpdateDataPage()

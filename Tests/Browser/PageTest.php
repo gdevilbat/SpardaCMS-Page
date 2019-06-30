@@ -36,6 +36,7 @@ class PageTest extends DuskTestCase
             $browser->script('document.getElementsByName("post[post_content]")[0].value = "'.$faker->text.'"');
             $browser->script('document.getElementsByName("post[post_status]")[0].checked = true');
             $browser->script('document.getElementsByName("post[comment_status]")[0].checked = true');
+            $browser->script('document.getElementsByName("post[post_parent]")[0].selectedIndex = 1');
             $browser->script('document.getElementsByName("meta[meta_keyword]")[0].value = "'.$faker->word.'"');
             $browser->script('document.querySelectorAll("[type=submit]")[0].click()');
 
@@ -52,8 +53,9 @@ class PageTest extends DuskTestCase
     public function testEditPage()
     {
         $user = \App\User::find(1);
+        $faker = \Faker\Factory::create();
 
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function (Browser $browser) use ($user, $faker) {
 
             $browser->loginAs($user)
                     ->visit(action('\Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers\PageController@index'))
@@ -62,8 +64,19 @@ class PageTest extends DuskTestCase
                     ->clickLink('Actions')
                     ->clickLink('Edit')
                     ->AssertSee('Page Form')
-                    ->press('Submit')
-                    ->waitForText('Master Data of Page')
+                    ->type('post[post_title]', $faker->word)
+                    ->type('post[post_slug]', $faker->word)
+                    ->type('meta[meta_title]', $faker->word)
+                    ->type('meta[meta_description]', $faker->text);
+
+            $browser->script('document.getElementsByName("post[post_content]")[0].value = "'.$faker->text.'"');
+            $browser->script('document.getElementsByName("post[post_status]")[0].checked = true');
+            $browser->script('document.getElementsByName("post[comment_status]")[0].checked = true');
+            $browser->script('document.getElementsByName("post[post_parent]")[0].selectedIndex = 1');
+            $browser->script('document.getElementsByName("meta[meta_keyword]")[0].value = "'.$faker->word.'"');
+            $browser->script('document.querySelectorAll("[type=submit]")[0].click()');
+
+            $browser->waitForText('Master Data of Page')
                     ->assertSee('Successfully Update Post!');
         });
     }

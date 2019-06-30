@@ -99,7 +99,7 @@
                             </div>
                             {{csrf_field()}}
                             @if(isset($_GET['code']))
-                                <input type="hidden" name="id" value="{{$_GET['code']}}">
+                                <input type="hidden" name="{{\Gdevilbat\SpardaCMS\Modules\Post\Entities\Post::getPrimaryKey()}}" value="{{$_GET['code']}}">
                             @endif
                             {{$method}}
 
@@ -197,7 +197,7 @@
                                             <select name="post[post_parent]" class="form-control m-input m-input--solid">
                                                 <option value="" selected>-- Non Group --</option>
                                                 @foreach ($parents as $parent)
-                                                    <option value="{{$parent->id}}" {{old('post.post_parent') && old('post.post_parent') == $parent->id ? 'selected' : (!empty($post) && $post->post_parent == $parent->id ? 'selected' : '')}}>-- {{ucfirst($parent->post_title)}} --</option>
+                                                    <option value="{{$parent->getKey()}}" {{old('post.post_parent') && old('post.post_parent') == $parent->getKey() ? 'selected' : (!empty($post) && $post->post_parent == $parent->getKey() ? 'selected' : '')}}>-- {{ucfirst($parent->post_title)}} --</option>
                                                 @endforeach
                                             </select>
                                         </div>
