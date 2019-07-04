@@ -2,13 +2,29 @@
 
 namespace Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Gdevilbat\SpardaCMS\Modules\Post\Foundation\AbstractPost;
 
-use Gdevilbat\SpardaCMS\Modules\Post\Http\Controllers\PostController;
-
-class PageController extends PostController
+class PageController extends AbstractPost
 {
-    protected $module = 'page';
-    protected $post_type = 'page';
+	/**
+     * Display a listing of the resource.
+     * @return Response
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->module = 'page';
+        $this->post_type = 'page';
+    }
+
+    public function getCategory()
+    {
+        return 'category';
+    }
+
+    public function getTag()
+    {
+        return 'tag';
+    }
 }
