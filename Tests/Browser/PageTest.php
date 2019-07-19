@@ -41,7 +41,7 @@ class PageTest extends DuskTestCase
             $browser->script('document.querySelectorAll("[type=submit]")[0].click()');
 
             $browser->waitForText('Master Data of Page')
-                    ->assertSee('Successfully Add Post!');
+                    ->assertSee('Successfully Add Page!');
         });
     }
 
@@ -77,7 +77,7 @@ class PageTest extends DuskTestCase
             $browser->script('document.querySelectorAll("[type=submit]")[0].click()');
 
             $browser->waitForText('Master Data of Page')
-                    ->assertSee('Successfully Update Post!');
+                    ->assertSee('Successfully Update Page!');
         });
     }
 
@@ -103,7 +103,7 @@ class PageTest extends DuskTestCase
                     ->waitForText('Delete Confirmation')
                     ->press('Delete')
                     ->waitForText('Master Data of Page')
-                    ->assertSee('Successfully Delete Post!');
+                    ->assertSee('Successfully Delete Page!');
         });
     }
 }

@@ -4,6 +4,11 @@
             Actions
         </a>
         <div class="dropdown-menu dropdown-menu-left">
+            @if(Module::has('Blog'))
+                <button class="dropdown-item" type="button">
+                    <a class="m-link m-link--state m-link--warning" href="{{action('\Gdevilbat\SpardaCMS\Modules\Blog\Http\Controllers\BlogController@page', ['slug' => $post->post_slug])}}" target="_blank"><i class="fa fa-eye"> Preview</i></a>
+                </button>
+            @endif
             @can('update-page', $post)
                 <button class="dropdown-item" type="button">
                     <a class="m-link m-link--state m-link--info" href="{{action('\Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers\PageController@create').'?code='.encrypt($post->getKey())}}"><i class="fa fa-edit"> Edit</i></a>
