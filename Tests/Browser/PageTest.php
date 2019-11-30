@@ -36,7 +36,7 @@ class PageTest extends DuskTestCase
             $browser->script('document.getElementsByName("post[post_content]")[0].value = "'.$faker->text.'"');
             $browser->script('document.getElementsByName("post[post_status]")[0].checked = true');
             $browser->script('document.getElementsByName("post[comment_status]")[0].checked = true');
-            $browser->script('document.getElementsByName("post[post_parent]")[0].selectedIndex = 1');
+            //$browser->script('document.getElementsByName("post[post_parent]")[0].selectedIndex = 1'); Disable For A While
             $browser->script('document.getElementsByName("meta[meta_keyword]")[0].value = "'.$faker->word.'"');
             $browser->script('document.querySelectorAll("[type=submit]")[0].click()');
 
@@ -72,7 +72,7 @@ class PageTest extends DuskTestCase
             $browser->script('document.getElementsByName("post[post_content]")[0].value = "'.$faker->text.'"');
             $browser->script('document.getElementsByName("post[post_status]")[0].checked = true');
             $browser->script('document.getElementsByName("post[comment_status]")[0].checked = true');
-            $browser->script('document.getElementsByName("post[post_parent]")[0].selectedIndex = 1');
+            //$browser->script('document.getElementsByName("post[post_parent]")[0].selectedIndex = 1'); Disable For A While
             $browser->script('document.getElementsByName("meta[meta_keyword]")[0].value = "'.$faker->word.'"');
             $browser->script('document.querySelectorAll("[type=submit]")[0].click()');
 
