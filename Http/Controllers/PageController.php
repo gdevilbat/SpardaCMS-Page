@@ -16,6 +16,7 @@ class PageController extends AbstractPost
 
         $this->module = 'page';
         $this->post_type = 'page';
+        $this->post_repository->setModule($this->module);
     }
 
     public function getCategory()
