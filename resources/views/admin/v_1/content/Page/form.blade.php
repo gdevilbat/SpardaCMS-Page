@@ -74,23 +74,23 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="form-group m-form__group d-flex px-0">
-                                    <div class="col-3 d-flex justify-content-end py-3">
+                                <div class="form-group m-form__group d-md-flex px-0">
+                                    <div class="col-md-3 d-md-flex justify-content-end py-3">
                                         <label for="exampleInputEmail1">Page Title<span class="ml-1 m--font-danger" aria-required="true">*</span></label>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <input type="text" class="form-control m-input slugify" data-target="slug" placeholder="Page Title" name="post[post_title]" value="{{old('post.post_title') ? old('post.post_title') : (!empty($post) ? $post->post_title : '')}}">
                                     </div>
                                 </div>
-                                <div class="form-group m-form__group d-flex px-0">
-                                    <div class="col-3 d-flex justify-content-end py-3">
+                                <div class="form-group m-form__group d-md-flex px-0">
+                                    <div class="col-md-3 d-md-flex justify-content-end py-3">
                                         <label for="exampleInputEmail1">Page Slug<span class="ml-1 m--font-danger" aria-required="true">*</span></label>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <input type="text" class="form-control m-input" id="slug" placeholder="Page Slug" name="post[post_slug]" value="{{old('post.post_slug') ? old('post.post_slug') : (!empty($post) ? $post->post_slug : '')}}">
                                     </div>
                                 </div>
-                                <div class="form-group m-form__group d-flex px-0">
+                                <div class="form-group m-form__group d-md-flex px-0">
                                     <div class="col-12">
                                         <textarea class="form-control m-input texteditor" placeholder="Page Content" name="post[post_content]">{{old('post.post_content') ? old('post.post_content') : (!empty($post) ? $post->post_content : '')}}</textarea>
                                     </div>
