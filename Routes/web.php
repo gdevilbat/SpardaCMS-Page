@@ -11,28 +11,29 @@
 |
 */
 
-Route::group(['prefix' => 'control', 'middleware' => 'core.menu'], function() {
+Route::group(['prefix' => 'control', 'middleware' => 'core.auth'], function() {
     
-	Route::group(['middleware' => 'core.auth'], function() {
+	Route::group(['prefix' => 'page'], function() {
 
-		Route::group(['prefix' => 'page'], function() {
-	        /*=============================================
-	        =            Post CMS            =
-	        =============================================*/
-	        
+        /*=============================================
+        =            Post CMS            =
+        =============================================*/
+
+        	Route::group(['middleware' => 'core.menu'], function() {
 			    Route::get('master', 'PageController@index')->middleware('can:menu-page')->name('page');
 			    Route::get('form', 'PageController@create')->name('page');
 			    Route::post('form', 'PageController@store')->middleware('can:create-page')->name('page');
 			    Route::put('form', 'PageController@store')->name('page');
 			    Route::delete('form', 'PageController@destroy')->name('page');
-
-			    Route::group(['prefix' => 'api'], function() {
-				    Route::get('master', 'PageController@serviceMaster')->middleware('can:menu-page');
-			    });
-	        
-	        /*=====  End of Post CMS  ======*/
-		});
-
+			});
         
+
+		    Route::group(['prefix' => 'api'], function() {
+			    Route::get('master', 'PageController@serviceMaster')->middleware('can:menu-page');
+		    });
+        
+        /*=====  End of Post CMS  ======*/
+
 	});
+
 });
