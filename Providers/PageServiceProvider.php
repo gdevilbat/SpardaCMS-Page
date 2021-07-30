@@ -60,7 +60,7 @@ class PageServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/page');
+        $viewPath = resource_path('views/Modules/SpardaCMS/page');
 
         $sourcePath = __DIR__.'/../resources/views';
 
@@ -69,7 +69,7 @@ class PageServiceProvider extends ServiceProvider
         ],'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/page';
+            return $path . '/Modules/SpardaCMS/page';
         }, \Config::get('view.paths')), [$sourcePath]), 'page');
     }
 
@@ -80,7 +80,7 @@ class PageServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = resource_path('lang/modules/page');
+        $langPath = resource_path('lang/Modules/SpardaCMS/page');
 
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'page');
