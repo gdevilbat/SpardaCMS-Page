@@ -1,6 +1,6 @@
 <?php
 
-namespace Gdevilbat\SpardaCMS\Modules\Taxonomy\Tests\Browser;
+namespace Gdevilbat\SpardaCMS\Modules\Page\Tests\Browser;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
