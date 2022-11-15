@@ -21,7 +21,7 @@ class PageControllerTest extends TestCase
         $response->assertStatus(302)
                  ->assertRedirect(action('\Gdevilbat\SpardaCMS\Modules\Core\Http\Controllers\Auth\LoginController@showLoginForm')); // Return Not Valid, User Not Login
 
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
 
         $response = $this->actingAs($user)
                          ->from(action('\Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers\PageController@index'))
@@ -37,7 +37,7 @@ class PageControllerTest extends TestCase
         $response->assertStatus(302)
                  ->assertRedirect(action('\Gdevilbat\SpardaCMS\Modules\Core\Http\Controllers\Auth\LoginController@showLoginForm')); //Return Not Valid, User Not Login
 
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
 
         $response = $this->actingAs($user)
                          ->from(action('\Gdevilbat\SpardaCMS\Modules\Page\Http\Controllers\PageController@create'))
@@ -102,7 +102,7 @@ class PageControllerTest extends TestCase
                  ->assertRedirect(action('\Gdevilbat\SpardaCMS\Modules\Core\Http\Controllers\Auth\LoginController@showLoginForm')); //Return Not Valid, User Not Login
 
 
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
 
         $page = \Gdevilbat\SpardaCMS\Modules\Post\Entities\Post::where('post_type', 'page')->first();
 

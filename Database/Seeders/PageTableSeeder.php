@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use DB;
 
+use Gdevilbat\SpardaCMS\Modules\Post\Entities\Post;
+
 class PageTableSeeder extends Seeder
 {
     /**
@@ -20,10 +22,10 @@ class PageTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        DB::table('posts')->insert([
+        Post::firstOrCreate(
+            ['post_slug' => 'homepage'],
             [
                 'post_title' => 'homepage',
-                'post_slug' => 'homepage',
                 'post_content' => $faker->text,
                 'post_excerpt' => $faker->word,
                 'post_status' => 'draft',
@@ -32,6 +34,6 @@ class PageTableSeeder extends Seeder
                 'modified_by' => 1,
                 'created_at' => \Carbon\Carbon::now()
             ]
-        ]);
+        );
     }
 }

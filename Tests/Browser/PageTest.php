@@ -18,7 +18,7 @@ class PageTest extends DuskTestCase
      */
     public function testCreatePage()
     {
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
         $faker = \Faker\Factory::create();
 
         $this->browse(function (Browser $browser) use ($user, $faker) {
@@ -52,7 +52,7 @@ class PageTest extends DuskTestCase
      */
     public function testEditPage()
     {
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
         $faker = \Faker\Factory::create();
 
         $this->browse(function (Browser $browser) use ($user, $faker) {
@@ -88,7 +88,7 @@ class PageTest extends DuskTestCase
      */
     public function testDeletePage()
     {
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
 
         $faker = \Faker\Factory::create();
 
